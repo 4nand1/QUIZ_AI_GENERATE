@@ -13,18 +13,21 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+model Quiz {
+  id        String     @id @default(uuid())
+  userId    String
+  title     String
+  content   String
+  summary   String
+  questions Question[]
+  createdAt DateTime   @default(now())
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  authorId  Int
-  author    User    @relation(fields: [authorId], references: [id])
+model Question {
+  id       String   @id @default(uuid())
+  quizId   String
+  question String
+  answers  String[]
+  correct  String
+  quiz     Quiz     @relation(fields: [quizId], references: [id])
 }

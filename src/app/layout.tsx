@@ -7,7 +7,7 @@ import {
   SignInButton,
   SignUpButton,
 } from "@clerk/nextjs";
-
+import "@/styles/globals.css";
 
 import { PropsWithChildren } from "react";
 import { AppSidebar, Header } from "./_components";
