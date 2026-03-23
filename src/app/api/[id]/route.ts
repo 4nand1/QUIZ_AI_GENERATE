@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-import prisma from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
 export async function GET(_request: Request, ctx: RouteContext<'/api/[id]'>) {
   const { userId } = await auth();
@@ -9,6 +9,7 @@ export async function GET(_request: Request, ctx: RouteContext<'/api/[id]'>) {
   }
 
   const { id } = await ctx.params;
+  const prisma = getPrisma();
 
   const quiz = await prisma.quiz.findFirst({
     where: { id, userId },

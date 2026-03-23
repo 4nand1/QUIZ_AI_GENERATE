@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { GoogleGenAI } from "@google/genai";
-import prisma from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
 const apiKey = process.env.GEMINI_API_KEY ?? process.env.GOOGLE_API_KEY;
 const gemini = apiKey ? new GoogleGenAI({ apiKey }) : null;
@@ -76,6 +76,8 @@ export async function POST(request: Request) {
     if (!response) {
       return new Response("Failed to generate quiz", { status: 500 });
     }
+
+    const prisma = getPrisma();
 
     const quiz = await prisma.quiz.create({
       data: {

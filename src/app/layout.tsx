@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import {
   ClerkProvider,
   SignedIn,
@@ -9,16 +8,6 @@ import "@/styles/globals.css";
 
 import { PropsWithChildren } from "react";
 import { AppSidebar, Header, SignedOutLanding } from "./_components";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const clerkAppearance = {
   layout: {
@@ -74,9 +63,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <ClerkProvider appearance={clerkAppearance}>
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+        <body className="antialiased">
           <SignedOut>
             <SignedOutLanding />
           </SignedOut>
