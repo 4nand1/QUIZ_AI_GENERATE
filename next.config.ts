@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   turbopack: {
     root: rootDirectory,
+    resolveAlias: {
+      "next/compat/router": "./src/lib/next-compat-router.ts",
+    },
   },
 };
 

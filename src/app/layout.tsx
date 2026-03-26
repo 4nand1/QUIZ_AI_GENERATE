@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import {
   ClerkProvider,
-  SignedIn,
-  SignedOut,
+  Show,
 } from "@clerk/nextjs";
 import "@/styles/globals.css";
 
@@ -79,17 +78,17 @@ const RootLayout = ({ children }: PropsWithChildren) => {
     >
       <html lang="en">
         <body className="antialiased">
-          <SignedOut>
+          <Show when="signed-out">
             <SignedOutLanding />
-          </SignedOut>
+          </Show>
 
-          <SignedIn>
+          <Show when="signed-in">
             <div className="w-screen h-screen">
               <Header />
 
               <AppSidebar>{children}</AppSidebar>
             </div>
-          </SignedIn>
+          </Show>
         </body>
       </html>
     </ClerkProvider>

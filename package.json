@@ -10,7 +10,7 @@
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.38.2",
+    "@clerk/nextjs": "^7.0.7",
     "@google/genai": "^1.43.0",
     "@google/generative-ai": "^0.24.1",
     "@prisma/adapter-pg": "^7.4.1",
